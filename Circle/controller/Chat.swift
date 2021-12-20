@@ -10,16 +10,31 @@ import Firebase
 import FirebaseAuth
 
 class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource  {
-    var messageArr = [Message]()
     
+//    @IBAction func LogOutButton(_ sender: Any) {
+//        do {
+//            try!         Auth.auth().signOut()
+//        }}
+        
+    
+        
+    var messageArr = [Message]()
+    var groupName = ""
     
     @IBOutlet weak var sendButton: UIButton!
     
     @IBAction func logOut(_ sender: Any) {
+        guard let SP = storyboard?.instantiateViewController(identifier: "Login") as? Login else {
+    
+            return
+        }
+        navigationController?.pushViewController(SP, animated: true)
+    
         do{
             try! Auth.auth().signOut()
+            print("signout")
         }catch {
-            debugPrint(error)
+        print("err------------------------or")
         }
     }
     
@@ -29,16 +44,17 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource  {
         msg.endEditing(true)
         msg.isEnabled = false
         sendButton.isEnabled = false
-        let msgDB = Database.database().reference().child("Messages")
+        let msgDB = Database.database().reference().child(groupName)
         let msgDict = ["Sender" : Auth.auth().currentUser?.email, "MessageBody" : msg.text!]
         msgDB.childByAutoId().setValue(msgDict){(error,ref) in
             if(error != nil){
-                debugPrint(error)
+                debugPrint(error!)
             }else{
                 debugPrint("Msg saved successfully")
                 self.msg.isEnabled = true
                 self.sendButton.isEnabled = true
                 self.msg.text = nil
+                self.table.reloadData()
             }
         }
     }
@@ -60,11 +76,12 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource  {
 
 
       getMsgs()
+        
 
         // Do any additional setup after loading the view.
     }
     func getMsgs(){
-            let msgDB = Database.database().reference().child("Messages")
+            let msgDB = Database.database().reference().child(groupName)
             msgDB.observe(.childAdded) { (snapShot) in
                 let value = snapShot.value as! Dictionary<String,String>
                 let text = value["MessageBody"]!

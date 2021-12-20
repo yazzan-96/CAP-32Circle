@@ -14,8 +14,8 @@ class Login: UIViewController {
     @IBAction func logButton(_ sender: Any) {
         Auth.auth().signIn(withEmail: emilLog.text!, password: PassLog.text!) { (user, error) in
                     if(error != nil){
-                        debugPrint(error)
-                        self.showAlert( "aaaaa")
+                        debugPrint(error!)
+                        self.showAlert( "Your email or password was incorrect. Please try again")
                     }else{
                           
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "HobbiesColl") as! HobbiesColl
@@ -41,6 +41,9 @@ class Login: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+
+        
         // Do any additional setup after loading the view.
     }
 
