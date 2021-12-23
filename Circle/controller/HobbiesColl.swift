@@ -32,8 +32,6 @@ class HobbiesColl: UIViewController , UICollectionViewDelegate , UICollectionVie
     }
     
   
-
-    
     
     @IBOutlet weak var collection: UICollectionView!
     

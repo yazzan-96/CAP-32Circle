@@ -32,6 +32,8 @@
 		AC4F19D4276689C700D569D2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F19D3276689C700D569D2 /* Message.swift */; };
 		AC4F19D7276735AC00D569D2 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F19D5276735AC00D569D2 /* CollectionCell.swift */; };
 		AC4F19D8276735AC00D569D2 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4F19D6276735AC00D569D2 /* CollectionCell.xib */; };
+		AC52C71E2770A83800FBD118 /* uploud.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52C71D2770A83800FBD118 /* uploud.swift */; };
+		ACDCD5F32771260800F4B631 /* users.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCD5F22771260800F4B631 /* users.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		AC4F19D3276689C700D569D2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AC4F19D5276735AC00D569D2 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		AC4F19D6276735AC00D569D2 /* CollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
+		AC52C71D2770A83800FBD118 /* uploud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploud.swift; sourceTree = "<group>"; };
+		ACDCD5F22771260800F4B631 /* users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = users.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 		AC45994A27660476006DB467 = {
 			isa = PBXGroup;
 			children = (
+				AC52C71D2770A83800FBD118 /* uploud.swift */,
 				AC45995527660477006DB467 /* Circle */,
 				AC45995427660477006DB467 /* Products */,
 			);
@@ -99,6 +104,7 @@
 				AC4C0BF4276F3A02003F0C81 /* controller */,
 				AC4C0BF3276F39DA003F0C81 /* view */,
 				AC4F19D3276689C700D569D2 /* Message.swift */,
+				ACDCD5F22771260800F4B631 /* users.swift */,
 				AC45996227660477006DB467 /* Assets.xcassets */,
 				AC45996427660477006DB467 /* LaunchScreen.storyboard */,
 				AC45996727660477006DB467 /* Info.plist */,
@@ -222,6 +228,8 @@
 				AC45995B27660477006DB467 /* Login.swift in Sources */,
 				AC45996127660477006DB467 /* Circle.xcdatamodeld in Sources */,
 				AC4F19CC27662D7800D569D2 /* Chat.swift in Sources */,
+				AC52C71E2770A83800FBD118 /* uploud.swift in Sources */,
+				ACDCD5F32771260800F4B631 /* users.swift in Sources */,
 				AC4F19D4276689C700D569D2 /* Message.swift in Sources */,
 				AC45995727660477006DB467 /* AppDelegate.swift in Sources */,
 				AC45995927660477006DB467 /* SceneDelegate.swift in Sources */,

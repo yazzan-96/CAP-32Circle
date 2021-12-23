@@ -9,17 +9,18 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource  {
-    
-//    @IBAction func LogOutButton(_ sender: Any) {
-//        do {
-//            try!         Auth.auth().signOut()
-//        }}
-        
+class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
         
+    
     var messageArr = [Message]()
     var groupName = ""
+    
+   
+        
+     
+        // ProgressViews
+    
     
     @IBOutlet weak var sendButton: UIButton!
     
@@ -59,7 +60,10 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource  {
         }
     }
     
-  
+    @IBAction func addPhoto(_ sender: Any) {
+
+    }
+    
 
     @IBOutlet weak var msg: UITextField!
     
@@ -81,11 +85,16 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource  {
         // Do any additional setup after loading the view.
     }
     func getMsgs(){
-            let msgDB = Database.database().reference().child(groupName)
-            msgDB.observe(.childAdded) { (snapShot) in
+       
+        // How to delete
+//        Database.database().reference().child(groupName).child("Sender").removeValue()
+       
+        let msgDB = Database.database().reference().child(groupName)
+        msgDB.observe(.childAdded) { (snapShot) in
                 let value = snapShot.value as! Dictionary<String,String>
                 let text = value["MessageBody"]!
                 let sender = value["Sender"]!
+                
                 let msgg = Message()
                 msgg.msgBody = text
                 msgg.sender = sender
