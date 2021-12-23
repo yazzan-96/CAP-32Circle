@@ -82,7 +82,6 @@
 		AC45994A27660476006DB467 = {
 			isa = PBXGroup;
 			children = (
-				AC52C71D2770A83800FBD118 /* uploud.swift */,
 				AC45995527660477006DB467 /* Circle */,
 				AC45995427660477006DB467 /* Products */,
 			);
@@ -133,6 +132,7 @@
 				AC45997E276613F6006DB467 /* SignUp.swift */,
 				AC4F19C72766188600D569D2 /* HobbiesColl.swift */,
 				AC4F19CB27662D7800D569D2 /* Chat.swift */,
+				AC52C71D2770A83800FBD118 /* uploud.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
