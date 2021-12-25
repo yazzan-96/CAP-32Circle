@@ -12,7 +12,6 @@ import FirebaseAuth
 class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
     
-    var segmentedControl: UISegmentedControl!
 
 //    var picker : UIPickerView
     
@@ -64,7 +63,7 @@ class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
             if(error == nil){
                         debugPrint("Registration Successful")
                 let docRef = self.db.collection("users")
-                docRef.addDocument(data: ["city" :self.cityText.text! ,"username" : self.userName.text!,"age" : self.emailSign.text!,"id" : user!.user.uid ])
+                docRef.addDocument(data: ["city" :self.cityText.text! ,"username" : self.userName.text!,"age" : self.emailSign.text!,"id" : user!.user.uid , "ginder" : self.ginder.selectedSegmentIndex == 0 ? "male" : "female"])
                 
                     }else{
                         debugPrint(error)
@@ -85,36 +84,20 @@ class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
     @IBOutlet weak var cityText: UITextField!
     
-    @IBAction func ginder(_ sender: UISegmentedControl) {
-       
-
-        switch sender.selectedSegmentIndex {
-        case 0:
-            print("Male")
-            
-        case 1:
-            print("female")
-            
-        default:
-            print("nothing")
-        }
-    }
+    @IBOutlet weak var ginder: UISegmentedControl!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let items = ["Male", "Female"]
         getUser ()
         city.delegate = self
         city.dataSource = self
         
          func loadView() {
             super.loadView()
-            segmentedControl = UISegmentedControl(items: items)
-                segmentedControl.selectedSegmentIndex = 0
-             segmentedControl.addTarget(self, action: #selector(self.ginder(_:)), for: .valueChanged)
-                self.view.addSubview(segmentedControl)
+        
         }
         // Do any additional setup after loading the view.
     }

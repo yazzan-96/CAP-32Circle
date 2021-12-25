@@ -7,12 +7,16 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
+import Firebase
+
 struct imagearry {
     var img : UIImage
     var imageName : String
     
 }
 class HobbiesColl: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource {
+
     var sportImages : [UIImage] = []
     var images: [imagearry] =  [imagearry (img : UIImage(named: "basketball")!, imageName: "Basketball"),imagearry (img: UIImage(named: "8ball")! , imageName: "8ball")]
     
@@ -44,9 +48,24 @@ class HobbiesColl: UIViewController , UICollectionViewDelegate , UICollectionVie
         }
         SP.groupName = images[indexPath.row].imageName
         
+        
+        
+        let refrence = Firestore.firestore().collection("users")
+        refrence.whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
+            .getDocuments { snapshot, error in
+                guard let snapshot = snapshot else {
+                    return
+                }
+                let data = snapshot.documents[0].data()
+                let city = data["city"] as! String
+                
+                SP.cityName = city
+                print(city)
+            }
+        
         navigationController?.pushViewController(SP, animated: true)
     }
-  
+    
       
        
         

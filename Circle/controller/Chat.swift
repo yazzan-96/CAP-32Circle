@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseFirestore
 
 class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -15,6 +16,7 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
     
     var messageArr = [Message]()
     var groupName = ""
+    var cityName : String = ""
     
    
         
@@ -42,11 +44,22 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
     @IBOutlet weak var table: UITableView!
     @IBAction func clickSend(_ sender: Any) {
         
-        msg.endEditing(true)
-        msg.isEnabled = false
-        sendButton.isEnabled = false
-        let msgDB = Database.database().reference().child(groupName)
-        let msgDict = ["Sender" : Auth.auth().currentUser?.email, "MessageBody" : msg.text!]
+        let refrence = Firestore.firestore().collection("users")
+        refrence.whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
+            .getDocuments { snapshot, error in
+                guard let snapshot = snapshot else {
+                    return
+                }
+                let data = snapshot.documents[0].data()
+                let name = data["username"] as! String
+                
+                
+                self.msg.endEditing(true)
+                self.msg.isEnabled = false
+                self.sendButton.isEnabled = false
+                let msgDB = Database.database().reference().child(self.cityName).child(self.groupName)
+                let msgDict = ["Sender" : name , "MessageBody" : self.msg.text!]
+        
         msgDB.childByAutoId().setValue(msgDict){(error,ref) in
             if(error != nil){
                 debugPrint(error!)
@@ -57,10 +70,11 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
                 self.msg.text = nil
                 self.table.reloadData()
             }
-        }
+        }}
     }
     
     @IBAction func addPhoto(_ sender: Any) {
+        
 
     }
     
@@ -74,6 +88,8 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
         
         table.delegate = self
         table.dataSource = self
+        print (cityName)
+        
         
         let nib = UINib(nibName: "ChatTableCell", bundle: nil)
         table.register(nib, forCellReuseIdentifier: "ChatTableCell")
@@ -85,11 +101,18 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
         // Do any additional setup after loading the view.
     }
     func getMsgs(){
-       
+        let refrence = Firestore.firestore().collection("users")
+        refrence.whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
+            .getDocuments { snapshot, error in
+                guard let snapshot = snapshot else {
+                    return
+                }
+                let data = snapshot.documents[0].data()
+                let city = data["city"] as! String
         // How to delete
 //        Database.database().reference().child(groupName).child("Sender").removeValue()
        
-        let msgDB = Database.database().reference().child(groupName)
+                let msgDB = Database.database().reference().child(city).child(self.groupName)
         msgDB.observe(.childAdded) { (snapShot) in
                 let value = snapShot.value as! Dictionary<String,String>
                 let text = value["MessageBody"]!
@@ -115,7 +138,7 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
         // Pass the selected object to the new view controller.
     }
     */
-
+    }
 }
 extension Chat {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

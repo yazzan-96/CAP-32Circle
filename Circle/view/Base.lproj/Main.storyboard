@@ -157,9 +157,6 @@
                                     <segment title="Male"/>
                                     <segment title="Female"/>
                                 </segments>
-                                <connections>
-                                    <action selector="ginder:" destination="GUm-Sa-fIn" eventType="valueChanged" id="UbG-6D-7IK"/>
-                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7EE-bP-R2i">
                                 <rect key="frame" x="37" y="548" width="341" height="34"/>
@@ -205,6 +202,7 @@
                         <outlet property="city" destination="IaJ-De-XUh" id="dlo-Ii-0Jf"/>
                         <outlet property="cityText" destination="7EE-bP-R2i" id="xY7-Y3-Jyb"/>
                         <outlet property="emailSign" destination="nH8-1F-wir" id="NWQ-To-FfY"/>
+                        <outlet property="ginder" destination="I69-O1-Rbl" id="Zkb-ah-PDZ"/>
                         <outlet property="passSign" destination="POM-xu-8hU" id="Urp-Fa-siX"/>
                         <outlet property="userName" destination="DcE-32-fwZ" id="IJK-vv-ppX"/>
                     </connections>
