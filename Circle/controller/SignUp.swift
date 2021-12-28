@@ -11,7 +11,6 @@ import FirebaseAuth
 
 class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
-    
 
 //    var picker : UIPickerView
     
@@ -63,7 +62,7 @@ class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
             if(error == nil){
                         debugPrint("Registration Successful")
                 let docRef = self.db.collection("users")
-                docRef.addDocument(data: ["city" :self.cityText.text! ,"username" : self.userName.text!,"age" : self.emailSign.text!,"id" : user!.user.uid , "ginder" : self.ginder.selectedSegmentIndex == 0 ? "male" : "female"])
+                docRef.addDocument(data: ["city" :self.cityText.text! ,"username" :  self.emailSign.text!,"id" : user!.user.uid , "ginder" : self.ginder.selectedSegmentIndex == 0 ? "male" : "female", "email" : self.emailSign.text!])
                 
                     }else{
                         debugPrint(error)
@@ -88,6 +87,11 @@ class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
     
     
+    
+
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -102,15 +106,4 @@ class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

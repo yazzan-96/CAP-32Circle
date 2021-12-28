@@ -9,6 +9,7 @@ import UIKit
 
 class ChatTableCell: UITableViewCell {
 
+    @IBOutlet weak var date: UILabel!
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var msgView: UILabel!
     @IBOutlet weak var userName: UILabel!

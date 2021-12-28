@@ -21,11 +21,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoK-4F-79i">
-                                <rect key="frame" x="98" y="10" width="160" height="16"/>
+                                <rect key="frame" x="98" y="10" width="160" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="yg8-HM-kbY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -36,21 +36,32 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="massges" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8E-No-KYB">
-                                <rect key="frame" x="93" y="30" width="190" height="20.5"/>
+                                <rect key="frame" x="93" y="30" width="190" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="DPi-I1-aOg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJK-O5-CUo">
+                                <rect key="frame" x="285.5" y="1" width="26.5" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="vDC-VY-LI9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="uJK-O5-CUo" secondAttribute="trailing" constant="8" id="Jyo-5N-WXb"/>
                             <constraint firstAttribute="bottom" secondItem="dbJ-6f-ahc" secondAttribute="bottom" constant="3" id="Met-KN-uJ8"/>
                             <constraint firstItem="dbJ-6f-ahc" firstAttribute="top" secondItem="IxT-vb-44j" secondAttribute="top" constant="3" id="bQi-45-Kf4"/>
                             <constraint firstItem="KoK-4F-79i" firstAttribute="top" secondItem="IxT-vb-44j" secondAttribute="top" constant="10" id="iPx-E5-D0k"/>
                             <constraint firstItem="KoK-4F-79i" firstAttribute="leading" secondItem="dbJ-6f-ahc" secondAttribute="trailing" constant="20" id="jp7-Kc-XiF"/>
+                            <constraint firstItem="uJK-O5-CUo" firstAttribute="top" secondItem="IxT-vb-44j" secondAttribute="top" constant="1" id="llf-e8-e0W"/>
                             <constraint firstItem="s8E-No-KYB" firstAttribute="leading" secondItem="dbJ-6f-ahc" secondAttribute="trailing" constant="15" id="nA0-SY-fEY"/>
                             <constraint firstItem="s8E-No-KYB" firstAttribute="top" secondItem="IxT-vb-44j" secondAttribute="top" constant="30" id="u5q-5S-PsM"/>
                             <constraint firstItem="dbJ-6f-ahc" firstAttribute="leading" secondItem="IxT-vb-44j" secondAttribute="leading" id="zTG-Gg-VVx"/>
@@ -66,6 +77,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="date" destination="uJK-O5-CUo" id="vT0-9p-xyT"/>
                 <outlet property="imageProfile" destination="dbJ-6f-ahc" id="9Gf-YU-ibc"/>
                 <outlet property="msgView" destination="s8E-No-KYB" id="QIG-8V-ewq"/>
                 <outlet property="userName" destination="KoK-4F-79i" id="ceY-e4-Gar"/>
@@ -76,8 +88,8 @@
     </objects>
     <resources>
         <image name="person" width="416" height="416"/>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

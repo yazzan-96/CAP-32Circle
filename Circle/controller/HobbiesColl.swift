@@ -66,6 +66,15 @@ class HobbiesColl: UIViewController , UICollectionViewDelegate , UICollectionVie
         navigationController?.pushViewController(SP, animated: true)
     }
     
+    @IBAction func updatButton(_ sender: Any) {
+        guard let SP = storyboard?.instantiateViewController(identifier: "Updating") as? Updating else {
+    
+            return
+        }
+        navigationController?.pushViewController(SP, animated: true)
+    }
+    
+    
       
        
         
