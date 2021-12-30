@@ -15,21 +15,24 @@ class CollectionCell: UICollectionViewCell {
 
     @IBOutlet weak var hobbyImage: UIImageView!
     
+    @IBOutlet weak var heightConst: NSLayoutConstraint!
+    @IBOutlet weak var widthConst: NSLayoutConstraint!
+
+    @IBOutlet weak var decrip: UIButton!
+    
+    
+    
+
     
 //    @IBAction func hobbyname(_ sender: UIButton) {
 //        
 //        
 //        
-//        
-////        print(sender.tag)
-////        move to screen (sender.tag)
-//        
-//        if sender.tag == 0 {
-//            print("aa")
-////        do whatwere for football
-//        } else if  sender.tag == 1 {
-//            print("bb")
-//            
+        
+//        print(sender.tag)
+//        move to screen (sender.tag)
+        
+       
 ////    hockey
 //                            
 //        
@@ -56,5 +59,6 @@ class CollectionCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+
 
 }

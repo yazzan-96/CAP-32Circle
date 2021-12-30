@@ -11,7 +11,10 @@ import FirebaseAuth
 
 class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
-
+    var ages : Int = 0
+    
+    
+    
 //    var picker : UIPickerView
     
     let listOfCity : [String] = ["Medina", "Jeddah","Riyadh","Mecca","Dammam","Abha","Tabuk","Tayef","Arar","Qasim","Hail"]
@@ -62,7 +65,7 @@ class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
             if(error == nil){
                         debugPrint("Registration Successful")
                 let docRef = self.db.collection("users")
-                docRef.addDocument(data: ["city" :self.cityText.text! ,"username" :  self.emailSign.text!,"id" : user!.user.uid , "ginder" : self.ginder.selectedSegmentIndex == 0 ? "male" : "female", "email" : self.emailSign.text!])
+                docRef.addDocument(data: ["city" :self.cityText.text! ,"username" :  self.emailSign.text!,"id" : user!.user.uid , "ginder" : self.ginder.selectedSegmentIndex == 0 ? "male" : "female", "email" : self.emailSign.text! , "age" :self.age.text])
                 
                     }else{
                         debugPrint(error)
@@ -72,6 +75,7 @@ class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
     @IBOutlet weak var emailSign: UITextField!
     
+    @IBOutlet weak var age: UITextField!
     
     @IBOutlet weak var passSign: UITextField!
     

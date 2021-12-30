@@ -15,4 +15,5 @@ class Message {
     var type : Int = 0  // 0-Text 1-Image 2-Location 3-Contact 4-Audio
     var imgMsg : UIImage?
     var date : String = ""
+    var userId : String = ""
 }

@@ -14,11 +14,11 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
     
     
     let picker = UIImagePickerController()
-    
+   
     var messageArr = [Message]()
     var groupName = ""
     var cityName : String = ""
-    
+    let db = Database.database().reference()
     
     func configureControls() {
         
@@ -49,6 +49,8 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
         }
         dismiss(animated: true, completion: nil)
     }
+    
+  
     
     
     func sendImageToFB(url: String) {
@@ -130,7 +132,8 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
                     "MessageBody" : self.msg.text!,
                     "date" : Date.now.formatted(.dateTime),
                     // TODO: Set this value based on the type of msg
-                    "type" : 0
+                    "type" : 0,
+                    "userId" : Auth.auth().currentUser!.uid
                 ]
                 
                 msgDB.childByAutoId().setValue(msgDict){(error,ref) in
@@ -277,7 +280,20 @@ extension Chat {
             completion(imageFromCloud)
         }.resume()
     }
-}
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+        if messageArr[indexPath.row].userId != Auth.auth().currentUser!.uid {
+            
+
+        if editingStyle == .delete {
+            messageArr.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            db.child(self.cityName).child(self.groupName).childByAutoId().removeValue()
+
+        
+        }
+    }
+        }}
 
 
 extension UIImageView {
