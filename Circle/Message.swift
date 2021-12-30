@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import FirebaseFirestore
+import Firebase
 
 class Message {
     var sender = ""
@@ -16,4 +18,7 @@ class Message {
     var imgMsg : UIImage?
     var date : String = ""
     var userId : String = ""
+    // msg id
+    
 }
+

@@ -155,29 +155,11 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
         
     }
     
-    
-    
+
     
     @IBOutlet weak var msg: UITextField!
     
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureControls()
-        table.delegate = self
-        table.dataSource = self
-        let nibb = UINib(nibName: "ImageCellTableViewCell", bundle: nil)
-        table.register(nibb, forCellReuseIdentifier: "ImageCellTableViewCell")
-        
-        
-        let nib = UINib(nibName: "ChatTableCell", bundle: nil)
-        table.register(nib, forCellReuseIdentifier: "ChatTableCell")
-        getMsgs()
-        
-        
-        // Do any additional setup after loading the view.
-    }
     
     func getMsgs(){
         let refrence = Firestore.firestore().collection("users")
@@ -197,7 +179,8 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
                         let type = value["type"] as? Int
                         let imgUrl = value["imgUrl"] as? String
                         let time = value ["date"] as? String
-                        
+                        let userId = value["userId"] as? String
+
                         
                         //let img = value["img"]
                         let msgg = Message()
@@ -206,6 +189,7 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
                         msgg.type = type ?? 0
                         msgg.imgUrl = imgUrl
                         msgg.date = time ?? "_"
+                        msgg.userId = userId ?? "_"
                         self.loadFromUrl(url: imgUrl) { img in
                             msgg.imgMsg = img
                             DispatchQueue.main.async {
@@ -218,6 +202,26 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
                     }
                 }}
     }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureControls()
+        table.delegate = self
+        table.dataSource = self
+        let nibb = UINib(nibName: "ImageCellTableViewCell", bundle: nil)
+        table.register(nibb, forCellReuseIdentifier: "ImageCellTableViewCell")
+        
+        
+        let nib = UINib(nibName: "ChatTableCell", bundle: nil)
+        table.register(nib, forCellReuseIdentifier: "ChatTableCell")
+        getMsgs()
+        
+        
+        // Do any additional setup after loading the view.
+    }
+    
+  
 }
 
 
@@ -282,15 +286,15 @@ extension Chat {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
-        if messageArr[indexPath.row].userId != Auth.auth().currentUser!.uid {
+        if messageArr[indexPath.row].userId == Auth.auth().currentUser!.uid {
             
 
         if editingStyle == .delete {
             messageArr.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            db.child(self.cityName).child(self.groupName).childByAutoId().removeValue()
+            db.child(self.cityName).child(self.groupName).child("-Ms9j7-WS5kq0wCWyzPn").removeValue()
+            
 
-        
         }
     }
         }}
