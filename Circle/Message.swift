@@ -18,7 +18,7 @@ class Message {
     var imgMsg : UIImage?
     var date : String = ""
     var userId : String = ""
-    // msg id
+    var massageId : String = ""
     
 }
 

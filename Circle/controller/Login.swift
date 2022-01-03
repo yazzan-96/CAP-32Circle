@@ -47,6 +47,7 @@ class Login: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBOutlet weak var imageDesign: UIImageView!
+    
 }
 

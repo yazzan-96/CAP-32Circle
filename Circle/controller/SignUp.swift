@@ -13,6 +13,7 @@ class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
     var ages : Int = 0
     
+    @IBOutlet weak var imgBackground: UIImageView!
     
     
 //    var picker : UIPickerView

@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
+    var key : String = ""
     let picker = UIImagePickerController()
    
     var messageArr = [Message]()
@@ -73,6 +73,7 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
                     "Sender" : name ,
                     "type" : 1,
                     "imgUrl" : url
+                    
                 ]
                 
                 msgDB.childByAutoId().setValue(msgDict){(error,ref) in
@@ -121,22 +122,25 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
                 let data = snapshot.documents[0].data()
                 let name = data["username"] as! String
                 
-                
+    
                 self.msg.endEditing(true)
                 self.msg.isEnabled = false
                 self.sendButton.isEnabled = false
                 let msgDB = Database.database().reference().child(self.cityName).child(self.groupName)
+                let newChatRef = msgDB.childByAutoId()
                 
                 let msgDict : [String : Any] = [
                     "Sender" : name ,
                     "MessageBody" : self.msg.text!,
                     "date" : Date.now.formatted(.dateTime),
-                    // TODO: Set this value based on the type of msg
                     "type" : 0,
-                    "userId" : Auth.auth().currentUser!.uid
+                    "userId" : Auth.auth().currentUser!.uid,
+                    "massageId" : newChatRef.key!
                 ]
                 
-                msgDB.childByAutoId().setValue(msgDict){(error,ref) in
+                newChatRef.setValue(msgDict){(error,ref) in
+                    self.key = (ref.key!)
+                                print(ref)
                     if(error != nil){
                         debugPrint(error!)
                     }else{
@@ -180,8 +184,11 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
                         let imgUrl = value["imgUrl"] as? String
                         let time = value ["date"] as? String
                         let userId = value["userId"] as? String
-
+                        let massageId = value ["massageId"] as? String
                         
+//                        let oo=value.keys
+//
+//                        print(oo)
                         //let img = value["img"]
                         let msgg = Message()
                         msgg.msgBody = text ?? "-"
@@ -190,6 +197,7 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
                         msgg.imgUrl = imgUrl
                         msgg.date = time ?? "_"
                         msgg.userId = userId ?? "_"
+                        msgg.massageId = massageId ?? "_"
                         self.loadFromUrl(url: imgUrl) { img in
                             msgg.imgMsg = img
                             DispatchQueue.main.async {
@@ -269,7 +277,9 @@ extension Chat {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        let msgType = messageArr[indexPath.row].type
+        if (msgType == 0) { return 100} else {
+            return 200}
         
     }
     
@@ -287,14 +297,20 @@ extension Chat {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
         if messageArr[indexPath.row].userId == Auth.auth().currentUser!.uid {
-            
+            let massage = messageArr[indexPath.row].massageId
 
         if editingStyle == .delete {
+            db.child(self.cityName).child(self.groupName).child(messageArr[indexPath.row].massageId).removeValue()
             messageArr.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            db.child(self.cityName).child(self.groupName).child("-Ms9j7-WS5kq0wCWyzPn").removeValue()
+//        let m : Void = db.child(self.cityName).child(self.groupName).child(massage).removeValue()
             
-
+        
+            // loop Message in groupName. Instead use filter
+            // check userId && date between model and indexPath.row
+            // assign the parent to var
+            // delete it
+        
         }
     }
         }}

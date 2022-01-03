@@ -20,7 +20,13 @@ class HobbiesColl: UIViewController , UICollectionViewDelegate , UICollectionVie
      var hobbyDescription: [String] = ["Basketball is a game played between two teams of five players each on a rectangular court, usually indoors. Each team tries to score by tossing the ball through the opponent's goal, an elevated horizontal hoop and net called a basket","Painting is the practice of applying paint, pigment, color or other medium to a solid surface" , "skating, sport in which bladelike runners or sets of wheels attached to shoes are used for gliding on ice or other surfaces","Volleyball is a team sport in which two teams of six players are separated by a net. Each team tries to score points by grounding a ball on the other team's court under organized rules","Cycle sport is competitive physical activity using bicycles","Community music involves musicians working with people to enable them to actively enjoy and participate in music","hiking, walking in nature as a recreational activity"]
 
     var sportImages : [UIImage] = []
-    var images: [imagearry] =  [imagearry (img : UIImage(named: "basketball")!, imageName: "Basketball"),imagearry (img: UIImage(named: "pinting3")! , imageName: "Pinting"),imagearry (img: UIImage(named: "skate")! , imageName: "Skating"),imagearry (img: UIImage(named: "volly")! , imageName: "Vollyball"),imagearry (img: UIImage(named: "cycle2")! , imageName: "Cycling"),imagearry (img: UIImage(named: "music")! , imageName: "Music"),imagearry (img: UIImage(named: "hiking3")! , imageName: "Hiking"),imagearry (img: UIImage(named: "hiking3")! , imageName: "Hiking")]
+    var images: [imagearry] =  [imagearry (img: UIImage(named: "basketball")!, imageName: "Basketball"),
+                                imagearry (img: UIImage(named: "pinting3")! , imageName: "Pinting"),
+                                imagearry (img: UIImage(named: "skate")! , imageName: "Skating"),
+                                imagearry (img: UIImage(named: "volly")! , imageName: "Vollyball"),
+                                imagearry (img: UIImage(named: "cycle2")! , imageName: "Cycling"),
+                                imagearry (img: UIImage(named: "music")! , imageName: "Music"),
+                                imagearry (img: UIImage(named: "hiking3")! , imageName: "Hiking")]
     
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -41,10 +47,11 @@ class HobbiesColl: UIViewController , UICollectionViewDelegate , UICollectionVie
 //        cell.descripsion = print(images[indexPath.row].imageName)
 //        cell.habbyName.setTitle(images[indexPath.row].imageName, for: .normal)
 //        cell.hobbyname.setTitle(images[indexPath.row].imageName, for: .normal)
-//        cell.hobbyname.tag = indexPath.row
+//       cell.hobbyname.tag = indexPath.row
 //        cell.description.tag = indexPath.row
-        cell.decrip.titleLabel!.text = images[indexPath.row].imageName
+//       cell.decrip.titleLabel!.text = images[indexPath.row].imageName
         cell.decrip.tag = indexPath.row
+        cell.decrip.setTitle(images[indexPath.row].imageName, for: .normal)
         cell.decrip.addTarget(self, action: #selector(descript), for: .touchUpInside)
         cell.hobbyImage.image = images[indexPath.row].img
         cell.heightConst.constant = 650
@@ -53,10 +60,10 @@ class HobbiesColl: UIViewController , UICollectionViewDelegate , UICollectionVie
         return cell
     }
     @objc func descript (sender : UIButton) {
-        let indexpath = IndexPath (row: sender.tag, section: 0)
-        let cell = images[indexpath.row].imageName
-        let cell2 = hobbyDescription[indexpath.row]
-        
+       
+        var indexpath = IndexPath (row: sender.tag, section: 0)
+        let cell = images[indexpath.item].imageName
+        let cell2 = hobbyDescription[indexpath.item]
         // Create the alert controller
         let alertController = UIAlertController(title: cell, message: cell2, preferredStyle: .alert)
         
