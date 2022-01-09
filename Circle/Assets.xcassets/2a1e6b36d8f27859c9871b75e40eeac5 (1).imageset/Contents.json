@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "011b24f9cb707b842aeb862ef9d54e5a.jpeg",
+      "filename" : "2a1e6b36d8f27859c9871b75e40eeac5 (1).jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -17,8 +17,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "localizable" : true
   }
 }

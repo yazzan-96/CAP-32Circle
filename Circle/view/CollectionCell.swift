@@ -12,12 +12,15 @@ import UIKit
 //}
 
 class CollectionCell: UICollectionViewCell {
-
+    @IBOutlet weak var event: UIButton!
+    
     @IBOutlet weak var hobbyImage: UIImageView!
     
     @IBOutlet weak var heightConst: NSLayoutConstraint!
     @IBOutlet weak var widthConst: NSLayoutConstraint!
 
+    @IBOutlet weak var events: UIButton!
+    
     @IBOutlet weak var decrip: UIButton!
     
     

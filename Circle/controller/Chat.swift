@@ -14,11 +14,18 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
     
     var key : String = ""
     let picker = UIImagePickerController()
-   
+    
     var messageArr = [Message]()
     var groupName = ""
     var cityName : String = ""
     let db = Database.database().reference()
+    
+    @IBOutlet weak var table: UITableView!
+    
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var msg: UITextField!
+    
+    
     
     func configureControls() {
         
@@ -32,6 +39,13 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
         table.dataSource = self
         
     }
+    
+    @IBAction func addPhoto(_ sender: Any) {
+        present(picker, animated: true, completion: nil)
+        
+        
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let image = info[.originalImage] as! UIImage
@@ -50,7 +64,6 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
         dismiss(animated: true, completion: nil)
     }
     
-  
     
     
     func sendImageToFB(url: String) {
@@ -92,8 +105,104 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
     
     // ProgressViews
     
+    func getMsgs(){
+        let refrence = Firestore.firestore().collection("users")
+        refrence.whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
+            .getDocuments { snapshot, error in
+                guard let snapshot = snapshot else {
+                    return
+                }
+                if snapshot.documents.count > 0 {
+                    let data = snapshot.documents[0].data()
+                    let city = data["city"] as! String
+                    let msgDB = Database.database().reference().child(city).child(self.groupName)
+                    msgDB.observe(.childAdded) { (snapShot) in
+                        if let value = snapShot.value as? Dictionary<String, Any> {
+                            let text = value["MessageBody"] as? String
+                            var sender = value["Sender"] as? String
+                            let type = value["type"] as? Int
+                            let imgUrl = value["imgUrl"] as? String
+                            let time = value ["date"] as? String
+                            let userId = value["userId"] as? String
+                            let massageId = value ["massageId"] as? String
+                            if userId == Auth.auth().currentUser?.uid{sender = "You"}
+                            
+                            let msgg = Message()
+                            msgg.msgBody = text ?? "-"
+                            msgg.sender = sender ?? "-"
+                            msgg.type = type ?? 0
+                            msgg.imgUrl = imgUrl
+                            msgg.date = time ?? "_"
+                            msgg.userId = userId ?? "_"
+                            msgg.massageId = massageId ?? "_"
+                            self.loadFromUrl(url: imgUrl) { img in
+                                msgg.imgMsg = img
+                                DispatchQueue.main.async {
+                                    self.table.reloadData()
+                                }
+                            }
+                            self.messageArr.append(msgg)
+                            debugPrint(self.messageArr.count)
+                            self.table.reloadData()
+                        }
+                    }}
+            }
+    }
     
-    @IBOutlet weak var sendButton: UIButton!
+    
+    
+    @IBAction func clickSend(_ sender: Any) {
+        
+        let refrence = Firestore.firestore().collection("users")
+        refrence.whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
+            .getDocuments { snapshot, error in
+                guard let snapshot = snapshot else {
+                    return
+                }
+                if snapshot.documents.count > 0 {
+                    let data = snapshot.documents[0].data()
+                    let name = data["username"] as! String
+                    
+                    
+                    self.msg.endEditing(true)
+                    self.msg.isEnabled = false
+                    self.sendButton.isEnabled = false
+                    let msgDB = Database.database().reference().child(self.cityName).child(self.groupName)
+                    let newChatRef = msgDB.childByAutoId()
+                    
+                    let msgDict : [String : Any] = [
+                        "Sender" : name ,
+                        "MessageBody" : self.msg.text!,
+                        "date" : Date.now.formatted(.dateTime),
+                        "type" : 0,
+                        "userId" : Auth.auth().currentUser!.uid,
+                        "massageId" : newChatRef.key!
+                    ]
+                    
+                    newChatRef.setValue(msgDict){(error,ref) in
+                        self.key = (ref.key!)
+                        print(ref)
+                        if(error != nil){
+                            debugPrint(error!)
+                        }else{
+                            debugPrint("Msg saved successfully")
+                            self.msg.isEnabled = true
+                            self.sendButton.isEnabled = true
+                            self.msg.text = nil
+                            self.table.reloadData()
+                        }
+                    }}
+            }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     @IBAction func logOut(_ sender: Any) {
         guard let SP = storyboard?.instantiateViewController(identifier: "Login") as? Login else {
@@ -108,107 +217,6 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
         }catch {
             print("err------------------------or")
         }
-    }
-    
-    @IBOutlet weak var table: UITableView!
-    @IBAction func clickSend(_ sender: Any) {
-        
-        let refrence = Firestore.firestore().collection("users")
-        refrence.whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
-            .getDocuments { snapshot, error in
-                guard let snapshot = snapshot else {
-                    return
-                }
-                let data = snapshot.documents[0].data()
-                let name = data["username"] as! String
-                
-    
-                self.msg.endEditing(true)
-                self.msg.isEnabled = false
-                self.sendButton.isEnabled = false
-                let msgDB = Database.database().reference().child(self.cityName).child(self.groupName)
-                let newChatRef = msgDB.childByAutoId()
-                
-                let msgDict : [String : Any] = [
-                    "Sender" : name ,
-                    "MessageBody" : self.msg.text!,
-                    "date" : Date.now.formatted(.dateTime),
-                    "type" : 0,
-                    "userId" : Auth.auth().currentUser!.uid,
-                    "massageId" : newChatRef.key!
-                ]
-                
-                newChatRef.setValue(msgDict){(error,ref) in
-                    self.key = (ref.key!)
-                                print(ref)
-                    if(error != nil){
-                        debugPrint(error!)
-                    }else{
-                        debugPrint("Msg saved successfully")
-                        self.msg.isEnabled = true
-                        self.sendButton.isEnabled = true
-                        self.msg.text = nil
-                        self.table.reloadData()
-                    }
-                }}
-    }
-    
-    @IBAction func addPhoto(_ sender: Any) {
-        present(picker, animated: true, completion: nil)
-        print("aa")
-        
-    }
-    
-
-    
-    @IBOutlet weak var msg: UITextField!
-    
-    
-    
-    func getMsgs(){
-        let refrence = Firestore.firestore().collection("users")
-        refrence.whereField("id", isEqualTo: Auth.auth().currentUser?.uid)
-            .getDocuments { snapshot, error in
-                guard let snapshot = snapshot else {
-                    return
-                }
-                
-                let data = snapshot.documents[0].data()
-                let city = data["city"] as! String
-                let msgDB = Database.database().reference().child(city).child(self.groupName)
-                msgDB.observe(.childAdded) { (snapShot) in
-                    if let value = snapShot.value as? Dictionary<String, Any> {
-                        let text = value["MessageBody"] as? String
-                        let sender = value["Sender"] as? String
-                        let type = value["type"] as? Int
-                        let imgUrl = value["imgUrl"] as? String
-                        let time = value ["date"] as? String
-                        let userId = value["userId"] as? String
-                        let massageId = value ["massageId"] as? String
-                        
-//                        let oo=value.keys
-//
-//                        print(oo)
-                        //let img = value["img"]
-                        let msgg = Message()
-                        msgg.msgBody = text ?? "-"
-                        msgg.sender = sender ?? "-"
-                        msgg.type = type ?? 0
-                        msgg.imgUrl = imgUrl
-                        msgg.date = time ?? "_"
-                        msgg.userId = userId ?? "_"
-                        msgg.massageId = massageId ?? "_"
-                        self.loadFromUrl(url: imgUrl) { img in
-                            msgg.imgMsg = img
-                            DispatchQueue.main.async {
-                                self.table.reloadData()
-                            }
-                        }
-                        self.messageArr.append(msgg)
-                        debugPrint(self.messageArr.count)
-                        self.table.reloadData()
-                    }
-                }}
     }
     
     
@@ -229,7 +237,7 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
         // Do any additional setup after loading the view.
     }
     
-  
+    
 }
 
 
@@ -298,22 +306,22 @@ extension Chat {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
         if messageArr[indexPath.row].userId == Auth.auth().currentUser!.uid {
             let massage = messageArr[indexPath.row].massageId
-
-        if editingStyle == .delete {
-            db.child(self.cityName).child(self.groupName).child(messageArr[indexPath.row].massageId).removeValue()
-            messageArr.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-//        let m : Void = db.child(self.cityName).child(self.groupName).child(massage).removeValue()
             
-        
-            // loop Message in groupName. Instead use filter
-            // check userId && date between model and indexPath.row
-            // assign the parent to var
-            // delete it
-        
+            if editingStyle == .delete {
+                db.child(self.cityName).child(self.groupName).child(messageArr[indexPath.row].massageId).removeValue()
+                messageArr.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                //        let m : Void = db.child(self.cityName).child(self.groupName).child(massage).removeValue()
+                
+                
+                // loop Message in groupName. Instead use filter
+                // check userId && date between model and indexPath.row
+                // assign the parent to var
+                // delete it
+                
+            }
         }
-    }
-        }}
+    }}
 
 
 extension UIImageView {

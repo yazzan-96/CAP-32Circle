@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "011b24f9cb707b842aeb862ef9d54e5a.jpeg",
+      "filename" : "sven-kucinic-Z0KjmjxUsKs-unsplash-min (2) (1) (1).jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -17,8 +17,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "localizable" : true
   }
 }

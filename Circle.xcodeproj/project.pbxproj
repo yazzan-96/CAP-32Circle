@@ -35,6 +35,9 @@
 		AC95E41127785CF200601C0B /* Updating.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC95E41027785CF200601C0B /* Updating.swift */; };
 		AC95E41427789AB000601C0B /* ImageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC95E41227789AB000601C0B /* ImageCellTableViewCell.swift */; };
 		AC95E41527789AB000601C0B /* ImageCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC95E41327789AB000601C0B /* ImageCellTableViewCell.xib */; };
+		ACBA61A9278B261C00C94C9B /* EventsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA61A8278B261B00C94C9B /* EventsTable.swift */; };
+		ACBA61AC278B4CC900C94C9B /* EventsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA61AA278B4CC900C94C9B /* EventsTableCell.swift */; };
+		ACBA61AD278B4CC900C94C9B /* EventsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBA61AB278B4CC900C94C9B /* EventsTableCell.xib */; };
 		ACDCD5F32771260800F4B631 /* users.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDCD5F22771260800F4B631 /* users.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +63,9 @@
 		AC95E41027785CF200601C0B /* Updating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updating.swift; sourceTree = "<group>"; };
 		AC95E41227789AB000601C0B /* ImageCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellTableViewCell.swift; sourceTree = "<group>"; };
 		AC95E41327789AB000601C0B /* ImageCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCellTableViewCell.xib; sourceTree = "<group>"; };
+		ACBA61A8278B261B00C94C9B /* EventsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTable.swift; sourceTree = "<group>"; };
+		ACBA61AA278B4CC900C94C9B /* EventsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableCell.swift; sourceTree = "<group>"; };
+		ACBA61AB278B4CC900C94C9B /* EventsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsTableCell.xib; sourceTree = "<group>"; };
 		ACDCD5F22771260800F4B631 /* users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = users.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,11 +126,13 @@
 		AC4C0BF3276F39DA003F0C81 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				AC4F19D6276735AC00D569D2 /* CollectionCell.xib */,
-				AC4F19CD2766853100D569D2 /* ChatTableCell.swift */,
 				AC45995C27660477006DB467 /* Main.storyboard */,
-				AC4F19CE2766853100D569D2 /* ChatTableCell.xib */,
+				AC4F19D6276735AC00D569D2 /* CollectionCell.xib */,
 				AC4F19D5276735AC00D569D2 /* CollectionCell.swift */,
+				ACBA61AA278B4CC900C94C9B /* EventsTableCell.swift */,
+				ACBA61AB278B4CC900C94C9B /* EventsTableCell.xib */,
+				AC4F19CE2766853100D569D2 /* ChatTableCell.xib */,
+				AC4F19CD2766853100D569D2 /* ChatTableCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -137,6 +145,7 @@
 				AC95E41027785CF200601C0B /* Updating.swift */,
 				AC4F19C72766188600D569D2 /* HobbiesColl.swift */,
 				AC4F19CB27662D7800D569D2 /* Chat.swift */,
+				ACBA61A8278B261B00C94C9B /* EventsTable.swift */,
 				AC95E41227789AB000601C0B /* ImageCellTableViewCell.swift */,
 				AC95E41327789AB000601C0B /* ImageCellTableViewCell.xib */,
 			);
@@ -216,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC45996627660477006DB467 /* LaunchScreen.storyboard in Resources */,
+				ACBA61AD278B4CC900C94C9B /* EventsTableCell.xib in Resources */,
 				AC45996327660477006DB467 /* Assets.xcassets in Resources */,
 				AC4F19D02766853100D569D2 /* ChatTableCell.xib in Resources */,
 				AC4F19D8276735AC00D569D2 /* CollectionCell.xib in Resources */,
@@ -243,8 +253,10 @@
 				AC4F19CF2766853100D569D2 /* ChatTableCell.swift in Sources */,
 				AC95E41127785CF200601C0B /* Updating.swift in Sources */,
 				AC45997F276613F6006DB467 /* SignUp.swift in Sources */,
+				ACBA61AC278B4CC900C94C9B /* EventsTableCell.swift in Sources */,
 				AC95E41427789AB000601C0B /* ImageCellTableViewCell.swift in Sources */,
 				AC4F19D7276735AC00D569D2 /* CollectionCell.swift in Sources */,
+				ACBA61A9278B261C00C94C9B /* EventsTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

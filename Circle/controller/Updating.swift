@@ -37,8 +37,8 @@ class Updating: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource 
         return listOfCity[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        cityText.text = listOfCity[row]
-        cityText.resignFirstResponder()
+        cityLabel.text = listOfCity[row]
+        cityLabel.resignFirstResponder()
         print(listOfCity[row])
     }
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -47,15 +47,15 @@ class Updating: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource 
     
     @IBOutlet weak var name: UITextField!
         
-    @IBOutlet weak var password: UITextField!
-    
+    @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var cityText: UITextField!
     
     @IBOutlet weak var city: UIPickerView!
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var ginder: UISegmentedControl!
+    
+    @IBOutlet weak var updatePhone: UITextField!
     
     
     let db = Firestore.firestore()
@@ -86,7 +86,9 @@ class Updating: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource 
                 let values = snap.data()
                 let user = values?["username"] as? String
                 let citty = values? ["city" ] as? String
-                self.cityText.text = citty
+                let phone = values? ["phonenumber"] as? String
+                self.cityLabel.text = citty
+                self.updatePhone.text = phone
                 self.name.text = user!
         }
     }
@@ -94,7 +96,7 @@ class Updating: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource 
     
     @IBAction func saveUpdating(_ sender: Any){
     
-        self.db.collection("users").document(docId).setData(["city" :self.cityText.text! ,"username" : self.name.text!],merge:true)
+        self.db.collection("users").document(docId).setData(["city" :self.cityLabel.text! ,"username" : self.name.text!, "phonenumber" : self.updatePhone.text!],merge:true)
         
 //        db.collection("users").document("ZUaiHh4z3QDx1cPVXc0z").setData(["username" : "jtgjgjgjmgmjc"])
 
