@@ -12,6 +12,7 @@ import FirebaseFirestore
 
 class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+//    var array = images[indexPath.row].imageName
     var key : String = ""
     let picker = UIImagePickerController()
     
@@ -222,6 +223,7 @@ class Chat: UIViewController , UITableViewDelegate, UITableViewDataSource ,UIIma
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "\(groupName) Chat"
         configureControls()
         table.delegate = self
         table.dataSource = self
@@ -311,13 +313,7 @@ extension Chat {
                 db.child(self.cityName).child(self.groupName).child(messageArr[indexPath.row].massageId).removeValue()
                 messageArr.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
-                //        let m : Void = db.child(self.cityName).child(self.groupName).child(massage).removeValue()
-                
-                
-                // loop Message in groupName. Instead use filter
-                // check userId && date between model and indexPath.row
-                // assign the parent to var
-                // delete it
+               
                 
             }
         }

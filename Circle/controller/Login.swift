@@ -38,11 +38,15 @@
             }
             
         }
+        @IBAction func SignUp(_ sender: Any) {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUp") as! SignUp
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            
-            self.navigationItem.hidesBackButton = true
             
             // Do any additional setup after loading the view.
         }

@@ -33,22 +33,15 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="" image="ask (1)"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNu-3N-BXl">
-                                <rect key="frame" x="179" y="10" width="48" height="38"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="calendar"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="13n-Su-6oe" firstAttribute="leading" secondItem="9I5-SK-6sF" secondAttribute="leadingMargin" constant="4" id="8Sv-Zc-lhK"/>
                             <constraint firstAttribute="bottom" secondItem="vjz-Jc-Dnm" secondAttribute="bottom" id="CTF-am-KsK"/>
-                            <constraint firstItem="lNu-3N-BXl" firstAttribute="trailing" secondItem="vjz-Jc-Dnm" secondAttribute="trailing" constant="-16" id="Nmm-Wm-OoN"/>
                             <constraint firstItem="vjz-Jc-Dnm" firstAttribute="top" secondItem="9I5-SK-6sF" secondAttribute="top" id="Q5A-1D-lhe"/>
                             <constraint firstAttribute="height" constant="180" id="QPf-ea-IDy"/>
                             <constraint firstAttribute="width" constant="243" id="dtC-QL-PD9"/>
                             <constraint firstItem="vjz-Jc-Dnm" firstAttribute="leading" secondItem="9I5-SK-6sF" secondAttribute="leading" id="eOk-Ja-fh1"/>
-                            <constraint firstItem="lNu-3N-BXl" firstAttribute="centerY" secondItem="13n-Su-6oe" secondAttribute="centerY" id="iJp-Co-hg5"/>
                             <constraint firstItem="13n-Su-6oe" firstAttribute="top" secondItem="9I5-SK-6sF" secondAttribute="top" constant="13" id="rdN-DW-6Uz"/>
                             <constraint firstAttribute="trailing" secondItem="vjz-Jc-Dnm" secondAttribute="trailing" id="sek-29-FrA"/>
                         </constraints>
@@ -65,8 +58,6 @@
             <size key="customSize" width="243" height="180"/>
             <connections>
                 <outlet property="decrip" destination="13n-Su-6oe" id="Mjs-ZE-PWb"/>
-                <outlet property="event" destination="lNu-3N-BXl" id="dKE-jP-hi9"/>
-                <outlet property="events" destination="lNu-3N-BXl" id="o3z-qq-ewX"/>
                 <outlet property="heightConst" destination="QPf-ea-IDy" id="FZd-qz-7FR"/>
                 <outlet property="hobbyImage" destination="vjz-Jc-Dnm" id="X5M-bb-ocs"/>
                 <outlet property="widthConst" destination="dtC-QL-PD9" id="PUQ-0b-ARA"/>
@@ -76,7 +67,6 @@
     </objects>
     <resources>
         <image name="ask (1)" width="32" height="32"/>
-        <image name="calendar" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

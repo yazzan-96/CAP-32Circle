@@ -28,8 +28,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="dbJ-6f-ahc">
-                                <rect key="frame" x="0.0" y="3" width="78" height="78"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dbJ-6f-ahc">
+                                <rect key="frame" x="0.0" y="4.5" width="78" height="75"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="78" id="dn5-lh-d3k"/>
                                 </constraints>
@@ -85,6 +86,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="person" width="416" height="416"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
     </resources>
 </document>

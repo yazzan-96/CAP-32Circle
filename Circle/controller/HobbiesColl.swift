@@ -17,18 +17,34 @@ struct imagearry {
 }
 class HobbiesColl: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
     
-    var hobbyDescription: [String] = ["Basketball is a game played between two teams of five players each on a rectangular court, usually indoors. Each team tries to score by tossing the ball through the opponent's goal, an elevated horizontal hoop and net called a basket","Painting is the practice of applying paint, pigment, color or other medium to a solid surface" , "skating, sport in which bladelike runners or sets of wheels attached to shoes are used for gliding on ice or other surfaces","Volleyball is a team sport in which two teams of six players are separated by a net. Each team tries to score points by grounding a ball on the other team's court under organized rules","Cycle sport is competitive physical activity using bicycles","Community music involves musicians working with people to enable them to actively enjoy and participate in music","hiking, walking in nature as a recreational activity"]
     
+    var hobbyDescription: [String] = ["Basketball is a game played between two teams of five players each on a rectangular court. Each team tries to score by tossing the ball through the opponent’s goal, horizontal hoop and net called a basket.",
+                                      
+                                      " A painting is a artwork created using  color on a surface such as paper or canvas. The pigment may be in a wet form, such as paint, or a dry form, such as pastels " ,
+                                      
+                                      "any sports or recreational activity which consists of traveling on surfaces or on ice using skates",
+                                      
+                                      " Volleyball is two teams of 6 players separated by a net. every team tries to score points by grounding a ball on the other team's court under organized rules",
+                                      
+                                      " It makes people gather to ride a bike for whatever purpose they choose. The program connects individuals with the community to build social networks, feel comfortable and enjoy being active through cycling",
+                                      
+                                      "Meet with other local music enthusiasts! Gather for socializing, meet new people and, of course, listen to music!",
+                                      
+                                      "Hiking is walking in natural environments, often in mountainous terrain or other scenic terrain.",
+                                      
+                                      "This community will help connect photographers to share their tips and photos.",
+                                      
+                                      "Crochet is the process of creating textiles by using a crochet hook to connect loops of thread, yarn, or threads of other materials"]
     var sportImages : [UIImage] = []
-    var images: [imagearry] =  [imagearry (img: UIImage(named: "baskeet")!, imageName: "Basketball"),
-                                imagearry (img: UIImage(named: "pinting3")! , imageName: "Pinting"),
-                                imagearry (img: UIImage(named: "skate")! , imageName: "Skating"),
-                                imagearry (img: UIImage(named: "volly")! , imageName: "Vollyball"),
-                                imagearry (img: UIImage(named: "cycle2")! , imageName: "Cycling"),
-                                imagearry (img: UIImage(named: "music")! , imageName: "Music"),
-                                imagearry (img: UIImage(named: "hiking3")! , imageName: "Hiking"),
-                                imagearry (img: UIImage(named: "photography")! , imageName: "Photography"),
-                                imagearry (img: UIImage(named: "sven-kucinic-Z0KjmjxUsKs-unsplash-min (2) (1) (1)")! , imageName: "Photography")]
+    var images: [imagearry] =  [imagearry (img: UIImage(named: "basketball")!, imageName: "Basketball"),
+                                imagearry (img: UIImage(named: "painting5")! , imageName: "Painting"),
+                                imagearry (img: UIImage(named: "skating5")! , imageName: "Skating"),
+                                imagearry (img: UIImage(named: "vollyball5")! , imageName: "Vollyball"),
+                                imagearry (img: UIImage(named: "cycling")! , imageName: "Cycling"),
+                                imagearry (img: UIImage(named: "music5")! , imageName: "Music"),
+                                imagearry (img: UIImage(named: "hiking5")! , imageName: "Hiking"),
+                                imagearry (img: UIImage(named: "photography5")! , imageName: "Photography"),
+                                imagearry (img: UIImage(named: "Crochet-1")! , imageName: "Crochet")]
     
     
     
@@ -48,8 +64,8 @@ class HobbiesColl: UIViewController , UICollectionViewDelegate , UICollectionVie
         //       cell.hobbyname.tag = indexPath.row
         //        cell.description.tag = indexPath.row
 //        cell.titleLabel.text = images[indexPath.row].imageName
-        cell.events.tag = indexPath.row
-        cell.events.addTarget(self, action: #selector(eventButt), for: .touchUpInside)
+//        cell.events.tag = indexPath.row
+//        cell.events.addTarget(self, action: #selector(eventButt), for: .touchUpInside)
         cell.decrip.tag = indexPath.row
 //        cell.events
         //        cell.decrip.setTitle(images[indexPath.row].imageName, for: .normal)
@@ -62,12 +78,6 @@ class HobbiesColl: UIViewController , UICollectionViewDelegate , UICollectionVie
         return cell
     }
     
-    @objc func eventButt (sender : UIButton) {
-        var indexpath = IndexPath (row: sender.tag, section: 0)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventsTable") as! EventsTable
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-    }
     
     
     @objc func descript (sender : UIButton) {

@@ -117,7 +117,7 @@ class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
             emailSign.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             passSign.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""  {
             
-            return "Please fill in all field"
+            return "Please fill in all fields"
             
         }
         return nil
@@ -134,7 +134,7 @@ class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
         
         func loadView() {
             super.loadView()
-            
+        
         }
         // Do any additional setup after loading the view.
     }

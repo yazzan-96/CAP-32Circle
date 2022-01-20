@@ -1,0 +1,144 @@
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "27O-Vc-TkQ"; */
+"27O-Vc-TkQ.title" = "Item";
+
+/* Class = "UILabel"; text = "Don't have an account?"; ObjectID = "2YP-hY-rnV"; */
+"2YP-hY-rnV.text" = "Don't have an account?";
+
+/* Class = "UILabel"; text = "how many people can join"; ObjectID = "5UG-PQ-0T1"; */
+"5UG-PQ-0T1.text" = "how many people can join";
+
+/* Class = "UILabel"; text = "Edit Profile"; ObjectID = "5g8-ua-eiH"; */
+"5g8-ua-eiH.text" = "Edit Profile";
+
+/* Class = "UITextField"; placeholder = "Enter Your Email"; ObjectID = "8k8-wJ-5nw"; */
+"8k8-wJ-5nw.placeholder" = "Enter Your Email";
+
+/* Class = "UITextField"; text = "bandar@gmail.com"; ObjectID = "8k8-wJ-5nw"; */
+"8k8-wJ-5nw.text" = "bandar@gmail.com";
+
+/* Class = "UITextField"; placeholder = "Enter your password "; ObjectID = "Ah5-Vz-yYG"; */
+"Ah5-Vz-yYG.placeholder" = "Enter your password ";
+
+/* Class = "UITextField"; text = "123456"; ObjectID = "Ah5-Vz-yYG"; */
+"Ah5-Vz-yYG.text" = "123456";
+
+/* Class = "UILabel"; text = "Update Your Number"; ObjectID = "AuB-Pz-hWD"; */
+"AuB-Pz-hWD.text" = "Update Your Number";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "BPM-zP-uti"; */
+"BPM-zP-uti.text" = "City";
+
+/* Class = "UIButton"; configuration.title = "Button"; ObjectID = "BUj-pB-kvi"; */
+"BUj-pB-kvi.configuration.title" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "BUj-pB-kvi"; */
+"BUj-pB-kvi.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Enter your name"; ObjectID = "DcE-32-fwZ"; */
+"DcE-32-fwZ.placeholder" = "Enter your name";
+
+/* Class = "UILabel"; text = "Update Your City"; ObjectID = "FoL-zU-myx"; */
+"FoL-zU-myx.text" = "Update Your City";
+
+/* Class = "UIButton"; configuration.title = "LogIn"; ObjectID = "GPM-BN-Q8b"; */
+"GPM-BN-Q8b.configuration.title" = "LogIn";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "GPM-BN-Q8b"; */
+"GPM-BN-Q8b.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "location"; ObjectID = "How-ye-sxZ"; */
+"How-ye-sxZ.text" = "location";
+
+/* Class = "UISegmentedControl"; I69-O1-Rbl.segmentTitles[0] = "Male"; ObjectID = "I69-O1-Rbl"; */
+"I69-O1-Rbl.segmentTitles[0]" = "Male";
+
+/* Class = "UISegmentedControl"; I69-O1-Rbl.segmentTitles[1] = "Female"; ObjectID = "I69-O1-Rbl"; */
+"I69-O1-Rbl.segmentTitles[1]" = "Female";
+
+/* Class = "UILabel"; text = "Error"; ObjectID = "IuV-6g-MTm"; */
+"IuV-6g-MTm.text" = "Error";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "Jca-fH-Ofe"; */
+"Jca-fH-Ofe.text" = "Username";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "JiT-ch-u5J"; */
+"JiT-ch-u5J.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "KOC-do-C5u"; */
+"KOC-do-C5u.text" = "Login";
+
+/* Class = "UITextField"; placeholder = "Enter your Password"; ObjectID = "POM-xu-8hU"; */
+"POM-xu-8hU.placeholder" = "Enter your Password";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "QuD-dJ-OIi"; */
+"QuD-dJ-OIi.title" = "Item";
+
+/* Class = "UILabel"; text = "Choose Your City"; ObjectID = "RAQ-6D-xyB"; */
+"RAQ-6D-xyB.text" = "Choose Your City";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "RO2-2a-quw"; */
+"RO2-2a-quw.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Add New Event"; ObjectID = "SGs-BH-gBa"; */
+"SGs-BH-gBa.text" = "Add New Event";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "T6y-81-Kt9"; */
+"T6y-81-Kt9.text" = "Description";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "TSu-NO-eQ4"; */
+"TSu-NO-eQ4.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Phone"; ObjectID = "U5K-eQ-tPz"; */
+"U5K-eQ-tPz.text" = "Phone";
+
+/* Class = "UILabel"; text = "Sex"; ObjectID = "W0o-fF-EuR"; */
+"W0o-fF-EuR.text" = "Sex";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "XdU-k0-270"; */
+"XdU-k0-270.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Sign up"; ObjectID = "YTW-Yf-Tft"; */
+"YTW-Yf-Tft.configuration.title" = "Sign up";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "YTW-Yf-Tft"; */
+"YTW-Yf-Tft.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ZdE-wP-o6I"; */
+"ZdE-wP-o6I.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "Zdo-d0-ljM"; */
+"Zdo-d0-ljM.text" = "Email";
+
+/* Class = "UILabel"; text = "SignUp"; ObjectID = "a4E-c1-IAZ"; */
+"a4E-c1-IAZ.text" = "SignUp";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "cDM-Ac-vfg"; */
+"cDM-Ac-vfg.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "d11-xk-YJG"; */
+"d11-xk-YJG.text" = "Password";
+
+/* Class = "UILabel"; text = "Change Username"; ObjectID = "hC4-gy-2ia"; */
+"hC4-gy-2ia.text" = "Change Username";
+
+/* Class = "UITextField"; placeholder = "Enter your Phone number"; ObjectID = "jXc-Of-IiS"; */
+"jXc-Of-IiS.placeholder" = "Enter your Phone number";
+
+/* Class = "UITextField"; placeholder = "Enter your email"; ObjectID = "nH8-1F-wir"; */
+"nH8-1F-wir.placeholder" = "Enter your email";
+
+/* Class = "UIButton"; configuration.title = "Sign "; ObjectID = "tah-St-M5C"; */
+"tah-St-M5C.configuration.title" = "Sign ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "tah-St-M5C"; */
+"tah-St-M5C.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Communities"; ObjectID = "uQq-8k-OD4"; */
+"uQq-8k-OD4.title" = "Communities";
+
+/* Class = "UILabel"; text = "Circle"; ObjectID = "vlF-qF-gwA"; */
+"vlF-qF-gwA.text" = "Circle";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "yrb-gL-0Hb"; */
+"yrb-gL-0Hb.title" = "Title";

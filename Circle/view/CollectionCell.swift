@@ -12,36 +12,13 @@ import UIKit
 //}
 
 class CollectionCell: UICollectionViewCell {
-    @IBOutlet weak var event: UIButton!
-    
+
     @IBOutlet weak var hobbyImage: UIImageView!
-    
     @IBOutlet weak var heightConst: NSLayoutConstraint!
     @IBOutlet weak var widthConst: NSLayoutConstraint!
-
-    @IBOutlet weak var events: UIButton!
-    
     @IBOutlet weak var decrip: UIButton!
     
     
-    
-
-    
-//    @IBAction func hobbyname(_ sender: UIButton) {
-//        
-//        
-//        
-        
-//        print(sender.tag)
-//        move to screen (sender.tag)
-        
-       
-////    hockey
-//                            
-//        
-//        }}
-//    @IBOutlet weak var habbyName: UIButton!
-//    
     
     func downloadFilesFromStore  () {
         let imageURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/circle-c51f8.appspot.com/o/8ball.jpeg?alt=media&token=9f33517b-6231-4cbe-b22f-5cabef59533f")
