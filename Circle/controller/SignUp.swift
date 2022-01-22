@@ -83,7 +83,7 @@ class SignUp: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
                 if(error == nil){
                     debugPrint("Registration Successful")
                     let docRef = self.db.collection("users")
-                    docRef.addDocument(data: ["city" :self.cityText.text! ,"username" :  self.emailSign.text!,"id" : user!.user.uid , "ginder" : self.ginder.selectedSegmentIndex == 0 ? "male" : "female", "email" : self.emailSign.text! , "phonenumber" :self.phoneNumber.text])
+                    docRef.addDocument(data: ["city" :self.cityText.text! ,"username" :  self.userName.text!,"id" : user!.user.uid , "ginder" : self.ginder.selectedSegmentIndex == 0 ? "male" : "female", "email" : self.emailSign.text! , "phonenumber" :self.phoneNumber.text])
                     let push =
                     self.storyboard?.instantiateViewController(identifier: "Login") as! Login
                     self.navigationController?.pushViewController( push, animated: true)
